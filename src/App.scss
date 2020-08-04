@@ -1,0 +1,48 @@
+// Styles
+// CoreUI Icons Set
+@import '~@coreui/icons/css/coreui-icons.css';
+// Import Flag Icons Set
+@import '~flag-icon-css/css/flag-icon.min.css';
+// Import Font Awesome Icons Set
+@import '~font-awesome/css/font-awesome.min.css';
+// Import Simple Line Icons Set
+@import '~simple-line-icons/css/simple-line-icons.css';
+// Import Main styles for this application
+@import './scss/style.scss';
+
+.breadcrumb {
+  background-color: #fff;
+}
+
+.sidebar-fixed .app-header + .app-body .sidebar {
+    height: calc(100vh - 150px);
+}
+
+
+
+body {
+    font-size: 0.8rem;
+    overflow: hidden;
+    height: 100%;
+}
+
+
+.sidebar .nav-link.active {
+    color: #fff;
+    background: #3a4248;
+}
+
+.sidebar .nav-link:hover {
+    color: #fff;
+    background: #7FB4D6;
+}
+
+.sidebar-minimized .nav-link.active {
+  color: #fff;
+  background: #3a4248;
+}
+
+.sidebar-minimized .nav-link:hover {
+  color: #fff;
+  background: #7FB4D6;
+}

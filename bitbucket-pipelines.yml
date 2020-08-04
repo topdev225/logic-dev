@@ -1,0 +1,89 @@
+# This is a sample build configuration for Python.
+# Check our guides at https://confluence.atlassian.com/x/x4UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:10.15.1
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build and Test
+          script:
+            - npm install
+            - npm run build
+          artifacts:
+            - build/**
+      - step:
+          name: Deploy
+          deployment: production
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.7
+              variables:
+                AWS_ACCESS_KEY_ID: 'AKIATFU5XMFD7OBIWX5L'
+                AWS_SECRET_ACCESS_KEY: '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'
+                AWS_DEFAULT_REGION: "us-east-2"
+                S3_BUCKET: "logicioe-prod"
+                LOCAL_PATH: "build"
+                DELETE_FLAG: 'true'
+    casey-branch:
+      - step:
+          name: Build and Test
+          script:
+            - npm install
+            - npm run build
+          artifacts:
+            - build/**
+      - step:
+          name: Deploy
+          deployment: production
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.7
+              variables:
+                AWS_ACCESS_KEY_ID: 'AKIATFU5XMFD7OBIWX5L'
+                AWS_SECRET_ACCESS_KEY: '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'
+                AWS_DEFAULT_REGION: "us-east-2"
+                S3_BUCKET: "logicioe-dev"
+                LOCAL_PATH: "build"
+                DELETE_FLAG: 'true'
+    matt-branch:
+      - step:
+          name: Build and Test
+          script:
+            - npm install
+            - npm run build
+          artifacts:
+            - build/**
+      - step:
+          name: Deploy
+          deployment: production
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.7
+              variables:
+                AWS_ACCESS_KEY_ID: 'AKIATFU5XMFD7OBIWX5L'
+                AWS_SECRET_ACCESS_KEY: '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'
+                AWS_DEFAULT_REGION: "us-east-2"
+                S3_BUCKET: "logicioe-dev"
+                LOCAL_PATH: "build"
+                DELETE_FLAG: 'true'
+    staging:
+      - step:
+          name: Build and Test
+          script:
+            - npm install
+            - npm run build
+          artifacts:
+            - build/**
+      - step:
+          name: Deploy
+          deployment: production
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.7
+              variables:
+                AWS_ACCESS_KEY_ID: 'AKIATFU5XMFD7OBIWX5L'
+                AWS_SECRET_ACCESS_KEY: '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'
+                AWS_DEFAULT_REGION: "us-east-2"
+                S3_BUCKET: "logicioe-dev"
+                LOCAL_PATH: "build"
+                DELETE_FLAG: 'true'

@@ -1,0 +1,6 @@
+{
+  "name": "IndividualDeviceBoard",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./IndividualDeviceBoard.js"
+}
